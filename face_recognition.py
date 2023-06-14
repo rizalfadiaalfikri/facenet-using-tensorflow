@@ -39,14 +39,14 @@ with tf.Graph().as_default():
         with open(classifier_filename_exp, 'rb') as infile:
             (model, class_names) = pickle.load(infile,encoding='latin1')
         
-        video_capture = cv2.VideoCapture(0)
-        video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-        video_capture.set(cv2.CAP_PROP_FPS, 20)
+        video_capture = cv2.VideoCapture(1)
+        # video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        # video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        # video_capture.set(cv2.CAP_PROP_FPS, 20)
         print('Start Recognition')
         while True:
             ret, frame = video_capture.read()
-            #frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)    #resize frame (optional)
+            # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)    #resize frame (optional)
             timer =time.time()
             if frame.ndim == 2:
                 frame = facenet.to_rgb(frame)
